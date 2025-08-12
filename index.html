@@ -11,26 +11,46 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   </head>
+
   <body>
-  
-    <header>
+
+      <header>
       <p class="simpass-logo"><span class="highlight">Sim</span>Pass</p>
     </header>
+
+    <main>
+    <!--hero section-->
     <h1>
-      <span class="highlight">Sim</span>ple-and-legible-<span class="highlight">Pas</span>swords Generator for your <em>not-that-important</em> accounts.
+      <span class="highlight">Sim</span>ple-and-legible-<span class="highlight">Pass</span>words Generator <br> for your <em>not-that-important</em> accounts.
     </h1>
+
+    <section class="pswrd-display"> <!-- Password Display-->
+
+    
     <p>this is your new Password! </p>
 
+    <div class="pswrd-display-controller">
     <button>copy</button>
     <div class="pswrd-area">feew231ds</div>
+    <button> re-do</button>
     <div class="tag-1">easy to read</div>
     <div class="tag-2">secure</div>
-    <button> re-do</button>
+    
+    </div>
+
+      </section>
+
+
+
+
+    <section class="generator-options"> <!-- Generator options-->
+
     <p>if you don't like this one, you can always </p>
     <h3>Create your own Password:</h3>
-    <h5>Choose</h5>
-    <section>
-      <h6>Style</h6>
+
+
+    <section class="generator-pswrd-style">
+      <h6>Choose Style</h6>
       <div class="horizontal-line-separator"></div>
       <label><input type="radio" name="style" value="readable" /> <strong>readable</strong>  - Only lowercase letters, organized in syllables</label><br>
       <label><input type="radio" name="style" value="mixed-case" /> <strong>ReAdaBLe eXteNdED</strong> - Only letters but mixing uppercase and lowercase randomly</label><br>
@@ -38,36 +58,33 @@
       <label><input type="radio" name="style" value="alpha-case" /> <strong>4lph4num3r1c eXteNd3D</strong>  - Same as the previous but mixing uppercase and lowercase</label><br>
       <label><input type="radio" name="style" value="complex" />  <strong>C0mPI3+3</strong> - All of the above plus ASCII symbols like "%$@&"</label>
     </section>
-    <h5>and/or</h5>
-    <section>
-      <h6>Length</h6>
+
+    <section class="generator-pswrd-length">
+      <h6>Choose Length</h6>
       <div class="horizontal-line-separator"></div>
       <section class="selector-bar">selectorbar</section>
       <section><label><strong>*number* Characters</strong></label></section>
-
-    <button>Generate your new Password</button> 
+   
     </section>
-  
-    <section> 
-    <p><strong>Disclaimer</strong>: this is a work for testing my coding skills. please, us this text generator wisely. 
-And remember to follow the 
+
+    <button class="btn-new-pswrd">Generate your new Password</button> 
+
+  </section>
+
+    <p class="disclaimer"><strong>Disclaimer</strong>: this is a work for testing my coding skills. please, us this text generator wisely. 
+        And remember to follow the 
         <a href="https://www.cisa.gov/secure-our-world/use-strong-passwords">CISA's safety guidelines for password management</a>.
       </p>
-    </section>
-
+</main>
 <footer>
+  
   <p><strong>SimPass</strong> is an application by Ferran B Calpe. Apache License 2.0 © 2025. We are not responsible for any issues arising from improper use of the application or from the security of the generated passwords.</p>
+ <!-- ojo que no los enlaces no mantienen la posición mienstras que <p> si.-->
   <a href="">github</a>
   <a href="">linkedIn</a>
-  <a href="">MoWedMeadow</a>
-
-  
-
+  <a href="">MoWedMeadow</a> 
 
 </footer>
-
-
-
-
   </body>
 </html>
+

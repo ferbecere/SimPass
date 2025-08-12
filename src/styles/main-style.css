@@ -30,12 +30,47 @@
 
 /* General styles */
 body{
+  margin:0 ;
   font-family: Inter;
+  
+    
 }
 header{
-  width:auto;
+  width:100vw;
   height: 64px ;
-  background: #818479;
+  background:var(--bg-section-color);
+  position:sticky;
+  top:0;
+  border-bottom:2px solid var(--secondary-color);
+}
+
+main{
+  margin:0 auto;
+  max-width: 1400px;
+  min-width:600px;
+  padding-left:2vw; /* aplicar en la media query de width=<600px y quitar de aqui*/
+
+}
+
+footer{
+
+  font-size: var(--font-size-xsmall);
+  background-color: var(--primary-color);
+  color:var(--bg-section-color);
+  width:100vw;
+  height: 64px;
+  position:fixed;
+  bottom:0;
+}
+footer p, a{
+  padding-top:1vh;
+  padding-bottom:1vh;
+  max-width:1400px;
+  min-width:600px;
+ /* color:#8BBF9F; color para revisar que los iconos y la p son seleccionados al modificar*/
+  margin: 0 auto;
+  
+
 }
 
 
@@ -43,13 +78,119 @@ header{
 /* header*/
 .simpass-logo{
   width: 200px;
-  font-size:2.986rem;
+  font-size:var(--h1);
   font-weight: 800;
+  margin-top: 0;
+  margin-left: 2vw;
+}
+
+/*body*/
+
+h1{
+  font-size: var(--h1);
+
+}
+h3{
+  font-size: var(--h3);
+  margin:0;
+}
+h5{
+  font-size: var(--h5);
+}
+h6{
+  font-size: var(--h6);
+  margin:0;
 }
 
 
 
+  /* body/password display*/
+
+.pswrd-display{
+  display:grid;
+  text-align: center;
+  place-self: center;
+  background-color: #FEDC00;
+}
+
+.psword-display p{
+  font-size: var(--h6);
+}
+
+.pswrd-display-controller{
+  display:grid;
+  grid-template-columns: auto auto auto;
+  align-content:center;
+  background-color: #8BBF9F;
+}
+
+/* generator options*/
+
+.generator-options{
+  display:grid;
+  place-self:center;
+  grid-template-columns: auto auto ;
+  gap: 2vw;
+  padding-right: 2vw; /* añadir media query*/
+
+
+}
+
+.generator-options p, h3{
+  place-self:center;
+  text-align: center;
+  grid-column: 1/ span 2;
+}
+
+.generator-options p{
+  color: var(--secondary-color);
+}
+
+.generator-pswrd-style{
+  background-color: var(--bg-section-color);
+  padding:20px;
+  border-radius: 8px;
+  max-width:450px;
+  min-width:360px;
+
+}
+
+.generator-pswrd-length{
+  background-color: var(--bg-section-color);
+  padding:20px;
+  border-radius: 8px;
+  max-width:450px;
+  min-width:360px;
+
+}
+
+.btn-new-pswrd{
+  background-color: var(--accent-color);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: var(--h6);
+  font-weight: 800;
+  border-radius: 12px;
+  border:none;
+
+}
+
+.disclaimer{
+  place-self:center;
+  font-size: var(--font-size-small);
+  background-color: rgba(254, 220, 0, 0.2);
+  border-color: 8px solid var(--warning-color);
+  border-radius:8px;
+  max-width:600px;
+  padding:8px;
+  
+
+}
+
+/*sparce*/
 
 .highlight{
   color:var(--accent-color);
 }
+
+/*footer*/
