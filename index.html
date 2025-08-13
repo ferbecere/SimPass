@@ -10,7 +10,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-  </head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=refresh" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=content_paste" />
+
+</head>
 
   <body>
 
@@ -20,27 +24,32 @@
 
     <main>
     <!--hero section-->
-    <h1>
-      <span class="highlight">Sim</span>ple-and-legible-<span class="highlight">Pass</span>words Generator <br> for your <em>not-that-important</em> accounts.
+    <section class="hero-section">
+ <h1>
+      <span class="highlight">Sim</span>ple-and-legible-<span class="highlight">Pass</span>words Generator <br> for your <i>not-that-important</i> accounts.
     </h1>
+    </section>
+   
 
     <section class="pswrd-display"> <!-- Password Display-->
 
     
-    <p>this is your new Password! </p>
+    <p>this is <em>your new Password! </em></p>
 
     <div class="pswrd-display-controller">
-    <button>copy</button>
+    <button> <span class="material-symbols-outlined">content_copy</span>
+ </button>
     <div class="pswrd-area">feew231ds</div>
-    <button> re-do</button>
+    <button> <span class="material-symbols-outlined">
+refresh
+</span></button>
+    <div class="tags">
     <div class="tag-1">easy to read</div>
     <div class="tag-2">secure</div>
-    
+    </div> 
     </div>
 
       </section>
-
-
 
 
     <section class="generator-options"> <!-- Generator options-->
@@ -62,14 +71,46 @@
     <section class="generator-pswrd-length">
       <h6>Choose Length</h6>
       <div class="horizontal-line-separator"></div>
-      <section class="selector-bar">selectorbar</section>
-      <section><label><strong>*number* Characters</strong></label></section>
+
+       <!--<section class=" BAR NUM CHAR -->
+      <fieldset class="pswrd-length-bar">
+     
+        <div class="range-container">
+        <input type="range"
+        id="pswrd-length-slider"
+        name="pswrdLength"
+        min="4"
+        max="26"
+        value="8"
+        step="1"
+        aria-valuemin="4"
+        aria-valuemax="26"
+        aria-valuenow="8"
+        aria-label="Password length"
+        >
+
+          <div class="marks">
+            <span class="mark" style="left:10%">8</span>
+            <span class="mark" style="left:30%">12</span>
+            <span class="mark" style="left:70%">20</span>
+          </div>
+        </div>
+
+        <!-- valor actual, pero ya se cambiará por-->
+
+      <div class="pswrd-length-value-num">
+        <output id="pswrd-length-output" for="pssword-length-slider">8</output>
+        <span>Characters</span>
+      </div>
+      
+      </fieldset>
+
    
-    </section>
+    </section> <!--button to generate!-->
 
     <button class="btn-new-pswrd">Generate your new Password</button> 
 
-  </section>
+    </section>
 
     <p class="disclaimer"><strong>Disclaimer</strong>: this is a work for testing my coding skills. please, us this text generator wisely. 
         And remember to follow the 
