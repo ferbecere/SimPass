@@ -1,4 +1,9 @@
-type PswrdType = "readable" | "readCase" | "alphanum" | "alphaCase" | "complex";
+import { sendPswrd } from "./utils/pswrdLogic";
+import { PswrdType } from "./utils/pswrdLogic";
+
+
+
+//type PswrdType = "readable" | "readCase" | "alphanum" | "alphaCase" | "complex";
 
 
 interface AppState{
@@ -72,6 +77,7 @@ console.log("Initial state:",initialState);
 console.log("User state:",state);
 console.log(isPswrdType);
 console.log(initStateFromDOM);
+
 
 
 
