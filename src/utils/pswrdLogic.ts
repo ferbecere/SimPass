@@ -71,7 +71,7 @@ function genPswrdAlphanum (length: number): string {
 
     // subsittuion mapping.
 
-    const map = {[key : string] : string} = {
+    const map : {[key : string] : string} = {
         a: "4",
         e: "3",
         o: "0",
@@ -93,16 +93,31 @@ function genPswrdAlphanum (length: number): string {
     return result.slice(0,length);
 }
 //HERE!!
-function genPswrdAlphaCase{
+function genPswrdAlphaCase(length:number): string{
 
-    return.password.slice.toUppercase.random;
-    //coger lo del genPswrdAlphanum 
+    let base = genPswrdAlphanum(length);
+    let result = "";
+
+
+    for(let char of base){
+        result += Math.random() > 0.5 ? char.toUpperCase() : char;
+
+    }
+
+    return result;
 
 }
 
-function genPswrdComplex{
+function genPswrdComplex(length: number): string{
 
-    return; 
+    const chars= "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTVWXYZ0123456789!€@#_><^&%()[]{}";
+    let result = "";
+
+    for (let i = 0; i< length; i++) {
+        result += chars[Math.floor(Math.random()*chars.length)];
+    }
+
+    return result; 
 
 
 }

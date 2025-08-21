@@ -1,5 +1,4 @@
-import { sendPswrd } from "./utils/pswrdLogic";
-import { PswrdType } from "./utils/pswrdLogic";
+import { type PswrdType , sendPswrd} from "./utils/pswrdLogic";
 
 
 
@@ -78,6 +77,12 @@ console.log("User state:",state);
 console.log(isPswrdType);
 console.log(initStateFromDOM);
 
+console.log(sendPswrd("readable", 10));
+console.log(sendPswrd("readCase", 8));
+console.log(sendPswrd("alphanum", 14));
+console.log(sendPswrd("alphaCase", 11));
+console.log(sendPswrd("complex", 20));
+console.log(sendPswrd("readable", 4));
 
 
 
