@@ -33,12 +33,27 @@ function isPswrdType(v:string): v is PswrdType{
 
 
 
-function initStateFromDOM():void{
-    const selected = document.querySelector<HTMLInputElement>('input[name="style"]:checked');
-    if (selected && isPswrdType(selected.value)){
-        state.pswrdType = selected.value;
+// function initStateFromDOM():void{
+//     const selected = document.querySelector<HTMLInputElement>('input[name="style"]:checked');
+//     if (selected && isPswrdType(selected.value)){
+//         state.pswrdType = selected.value;
+//     }
+// }
+
+    function initStateFromDOM():void{
+
+        const radio = document.querySelector<HTMLInputElement>(`input[name="style"][value="${state.pswrdType}"]`);
+        if(radio) radio.checked = true;
+
+        const selected = document.querySelector<HTMLInputElement>('input[name="style"]:checked');
+        if (selected && isPswrdType(selected.value)){
+            state.pswrdType = selected.value;
+        }
+
+
     }
-}
+
+
 
 
     const slider = document.getElementById('pswrd-length-slider') as HTMLInputElement | null;
@@ -77,7 +92,7 @@ function setupListeners():void{
 // setting interaction areas
 
 const pswrdArea = document.querySelector<HTMLDivElement>('.pswrd-area');
-
+//generate new pssword
 function updatePswrd(): void {
     if(!pswrdArea) return; 
 
@@ -91,6 +106,11 @@ const generateBtn = document.querySelector<HTMLButtonElement>('.btn-new-pswrd');
 generateBtn?.addEventListener('click', () => {
     updatePswrd();
 })
+
+//refreshbutton
+
+const refreshBtn = document.querySelector<HTMLButtonElement>('.btn-refresh');
+refreshBtn?.addEventListener('click', updatePswrd);
 
 
 console.log("Initial state:",initialState);
