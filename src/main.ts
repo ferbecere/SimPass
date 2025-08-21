@@ -31,6 +31,8 @@ function isPswrdType(v:string): v is PswrdType{
 
 // sincro with DOM
 
+
+
 function initStateFromDOM():void{
     const selected = document.querySelector<HTMLInputElement>('input[name="style"]:checked');
     if (selected && isPswrdType(selected.value)){
@@ -66,11 +68,30 @@ function setupListeners():void{
             const n = parseInt(slider.value,10);
             if(!Number.isNaN(n)){
                 state.pswrdLength = n;
-                console.log("Passwrod length updated:", state.pswrdLength );
+                console.log("Password length updated:", state.pswrdLength );
             }
         });
     }
 }    
+
+// setting interaction areas
+
+const pswrdArea = document.querySelector<HTMLDivElement>('.pswrd-area');
+
+function updatePswrd(): void {
+    if(!pswrdArea) return; 
+
+    const newPswrd = sendPswrd(state.pswrdType, state.pswrdLength);
+    state.pswrdGenerated = newPswrd;
+    pswrdArea.textContent = newPswrd;
+}
+
+
+const generateBtn = document.querySelector<HTMLButtonElement>('.btn-new-pswrd');
+generateBtn?.addEventListener('click', () => {
+    updatePswrd();
+})
+
 
 console.log("Initial state:",initialState);
 console.log("User state:",state);
@@ -89,3 +110,4 @@ console.log(sendPswrd("readable", 4));
 
 initStateFromDOM();
 setupListeners();
+updatePswrd();
