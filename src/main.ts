@@ -53,22 +53,35 @@ function isPswrdType(v:string): v is PswrdType{
     }
 
 
-    // const slider = document.getElementById('pswrd-length-slider') as HTMLInputElement | null;
-    // if(slider){
-    //     const n = parseInt(slider.value,10);
-    //     if(!Number.isNaN(n))state.pswrdLength = n;
-    // }
+    
 
 function syncSliderWithState(): void{
     const slider = document.getElementById('pswrd-length-slider') as HTMLInputElement | null;
-    const output = document.getElementById('pswrd-length-output') as HTMLInputElement | null;
+    const numberInput = document.getElementById('pswrd-length-output') as HTMLInputElement | null;
 
-    if(!slider || !output) return;
+    if(!slider || !numberInput) return;
 
     slider.value = state.pswrdLength.toString();
-    output.value = state.pswrdLength.toString();
+    numberInput.value = state.pswrdLength.toString();
  
-    
+    if (slider && numberInput){
+        slider.addEventListener("input", ()=>{
+            const n = parseInt(slider.value,10);
+            if(!Number.isNaN(n)){
+                state.pswrdLength = n;
+                numberInput.value = n.toString();
+            }
+        });
+
+        numberInput.addEventListener("input",()=>{
+            const n = parseInt(numberInput.value,10);
+            if(!Number.isNaN(n)){
+                state.pswrdLength = n;
+                slider.value = n.toString();
+                updatePswrd();
+            }  
+        });
+    }
 
 }
 
