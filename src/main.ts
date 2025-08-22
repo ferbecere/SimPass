@@ -1,4 +1,5 @@
 import { type PswrdType , sendPswrd} from "./utils/pswrdLogic";
+import { getReadableTag,getSecureTag } from "./utils/tags";
 
 
 
@@ -31,8 +32,6 @@ function isPswrdType(v:string): v is PswrdType{
 
 // sincro with DOM
 
-
-
 // function initStateFromDOM():void{
 //     const selected = document.querySelector<HTMLInputElement>('input[name="style"]:checked');
 //     if (selected && isPswrdType(selected.value)){
@@ -54,14 +53,24 @@ function isPswrdType(v:string): v is PswrdType{
     }
 
 
+    // const slider = document.getElementById('pswrd-length-slider') as HTMLInputElement | null;
+    // if(slider){
+    //     const n = parseInt(slider.value,10);
+    //     if(!Number.isNaN(n))state.pswrdLength = n;
+    // }
 
-
+function syncSliderWithState(): void{
     const slider = document.getElementById('pswrd-length-slider') as HTMLInputElement | null;
-    if(slider){
-        const n = parseInt(slider.value,10);
-        if(!Number.isNaN(n))state.pswrdLength = n;
-    }
+    const output = document.getElementById('pswrd-length-output') as HTMLInputElement | null;
 
+    if(!slider || !output) return;
+
+    slider.value = state.pswrdLength.toString();
+    output.value = state.pswrdLength.toString();
+ 
+    
+
+}
 
     // setting listeners
 
@@ -84,6 +93,14 @@ function setupListeners():void{
             if(!Number.isNaN(n)){
                 state.pswrdLength = n;
                 console.log("Password length updated:", state.pswrdLength );
+
+                const output = document.getElementById('pswrd-length-output') as HTMLInputElement | null;
+                if (output) output.value = n.toString();
+
+                updatePswrd();
+                updateTags();
+
+
             }
         });
     }
@@ -105,7 +122,31 @@ function updatePswrd(): void {
 const generateBtn = document.querySelector<HTMLButtonElement>('.btn-new-pswrd');
 generateBtn?.addEventListener('click', () => {
     updatePswrd();
+    updateTags();
 })
+
+
+// tags readabilty and secure getters
+
+function updateTags(): void{
+    const readability = getReadableTag(state.pswrdType, state.pswrdLength);
+    const security = getSecureTag(state.pswrdType, state.pswrdLength);
+
+    const readabilityElem = document.getElementById("tag_readable");
+    const securityElem = document.getElementById("tag_secure");
+
+
+    if(readabilityElem){
+        readabilityElem.textContent = readability.label;
+        readabilityElem.style.backgroundColor = readability.color;
+    }
+
+    if (securityElem){
+        securityElem.textContent = security.label;
+        securityElem.style.backgroundColor = security.color;
+    }
+}
+
 
 //refreshbutton
 
@@ -113,21 +154,23 @@ const refreshBtn = document.querySelector<HTMLButtonElement>('.btn-refresh');
 refreshBtn?.addEventListener('click', updatePswrd);
 
 
-console.log("Initial state:",initialState);
-console.log("User state:",state);
-console.log(isPswrdType);
-console.log(initStateFromDOM);
+// console.log("Initial state:",initialState);
+// console.log("User state:",state);
+// console.log(isPswrdType);
+// console.log(initStateFromDOM);
 
-console.log(sendPswrd("readable", 10));
-console.log(sendPswrd("readCase", 8));
-console.log(sendPswrd("alphanum", 14));
-console.log(sendPswrd("alphaCase", 11));
-console.log(sendPswrd("complex", 20));
-console.log(sendPswrd("readable", 4));
+// console.log(sendPswrd("readable", 10));
+// console.log(sendPswrd("readCase", 8));
+// console.log(sendPswrd("alphanum", 14));
+// console.log(sendPswrd("alphaCase", 11));
+// console.log(sendPswrd("complex", 20));
+// console.log(sendPswrd("readable", 4));
 
 
 
 
 initStateFromDOM();
-setupListeners();
+syncSliderWithState();
 updatePswrd();
+updateTags();
+setupListeners();
