@@ -373,6 +373,20 @@ h6{
   margin: 0 auto 2px;
 }
 
+/* test para hacer hightlight cuando estas puesto en el 8,12 y 20*/
+input[type="range"].highlighted::-webkit-slider-thumb {
+    background-color: #29ed40;
+}
+input[type="range"].highlighted::-moz-range-thumb {
+    background-color: #29ed40;
+}
+
+input[type="range"].highlighted::-webkit-slider-runnable-track {
+    background-color: rgba(41, 237, 64, 0.2);
+} 
+
+
+
 
 
 .pswrd-length-value-num{
@@ -380,6 +394,8 @@ h6{
   align-items: center;
   justify-content: center;
   margin-top:2rem;
+  font-weight: 800;
+  background-color: var(--bg-section-color);
 }
 
 .pswrd-length-value-num output{
@@ -387,8 +403,19 @@ h6{
   font-size: var(--h6);
   font-weight:bold;
   margin-right:0.25rem;
+  
 }
 
+#pswrd-length-output{
+  width: 60px;           
+    text-align: center;   
+    font-size: 1rem;
+    font-weight: 900;    
+    color: var(--primary-color);         
+    background-color: var(--bg-color);
+    border: 1px solid var(--secondary-color);  
+    padding: 5px;
+}
 
 
 

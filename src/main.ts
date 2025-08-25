@@ -147,6 +147,11 @@ function setupListeners():void{
                 updatePswrd();
                 updateTags();
 
+                //retomar mas adelante. la idea es que marque los colores cuando se pone el 8, 12 y 20
+                // slider.classList.remove("highlighted"); 
+                // if ([8, 12, 20].includes(n)) {
+                // slider.classList.add("highlighted");
+
 
             }
         });
