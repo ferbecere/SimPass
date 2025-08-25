@@ -52,7 +52,39 @@ function isPswrdType(v:string): v is PswrdType{
 
     }
 
+const copyBtn = document.querySelector(".btn-copy") as HTMLButtonElement | null;
+const pswrdArea = document.querySelector<HTMLDivElement>('.pswrd-area');
 
+
+if(copyBtn && pswrdArea){
+    copyBtn.addEventListener("click",async() =>{
+        const textToCopy = pswrdArea.innerText.trim();
+        if(!textToCopy) return;
+
+        try {
+            await navigator.clipboard.writeText(textToCopy);
+
+            showToast("Password copied to clipboard!");
+        } catch(err){
+            console.error("Error copying:",err);
+            showToast("Failed to copy password");
+        }
+    });
+}
+
+function showToast(message:string){
+    const toast = document.createElement("div");
+    toast.innerText = message;
+    toast.className = "toast";
+    document.body.appendChild(toast);
+
+    setTimeout(()=>toast.classList.add("show"),10);
+    
+    setTimeout(()=>{
+        toast.classList.remove("show");
+        setTimeout(()=> toast.remove(), 300);
+    },2000);
+}
     
 
 function syncSliderWithState(): void{
@@ -84,6 +116,8 @@ function syncSliderWithState(): void{
     }
 
 }
+
+
 
     // setting listeners
 
@@ -121,7 +155,6 @@ function setupListeners():void{
 
 // setting interaction areas
 
-const pswrdArea = document.querySelector<HTMLDivElement>('.pswrd-area');
 //generate new pssword
 function updatePswrd(): void {
     if(!pswrdArea) return; 
